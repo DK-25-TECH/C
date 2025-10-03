@@ -1,0 +1,56 @@
+#include<stdio.h>
+int q[100];
+int f=-1,t=-1;
+void enqueue(int data)
+{
+    int n=sizeof(q)/sizeof(q[0]);
+   if(t==n-1)
+   {
+       printf(" QUEUE IS FULL ");
+       return;
+   }
+   if(f==-1) f=0;
+      q[++t]=data;
+}
+void dequeue()
+{
+    if(f==-1 || f>t)
+    {
+        printf("QUEUE IS EMPTY");
+        return;
+    }
+    f++;
+    if(f>t)
+    {
+        f=-1;
+        t=-1;
+    }
+}
+void display()
+{
+    if(f==-1)
+    {
+        printf("QUEUE IS EMPTY");
+        return;
+    }
+    for(int i=f;i<=t;i++)
+    {
+        printf("%d ",q[i]);
+    }
+}
+int main()
+{
+    enqueue(108);
+    enqueue(10);
+    enqueue(10);
+    enqueue(10);
+    enqueue(10);
+    enqueue(105);
+    display();
+    printf("\n");
+    dequeue();
+    dequeue();
+    display();
+    
+    return 0;
+}
