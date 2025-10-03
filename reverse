@@ -1,0 +1,75 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char c[100];
+    char x[100];
+    fgets(c,sizeof(c),stdin);
+    
+    int n=strlen(c);
+    if(c[n-1]=='\n')
+    {
+        c[n-1]='\0';
+        n--;
+    }
+   
+    int z=0;
+    for(int i=n;i>=0;i--)
+    {
+        x[z++]=c[i];
+    }
+    for(int i=0;i<=n;i++)
+    {
+        printf("%c ",x[i]);
+    }
+    
+}
+
+
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char c[100];
+    fgets(c,sizeof(c),stdin);
+    int n=strlen(c);
+    if(c[n-1]=='\n')
+    {
+        c[n-1]='\0';
+        n--;
+    }
+    int l=0,r=n;
+    while(l<=r)
+    {
+        char x=c[l];
+        c[l]=c[r];
+        c[r]=x;
+        l++;
+        r--;
+    }
+    for(int i=0;i<=n;i++)
+    {
+        printf("%c ",c[i]);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
