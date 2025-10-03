@@ -1,0 +1,211 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node{
+    int data;
+    struct node *next;
+}*node;
+node head=NULL;
+node create(int data)
+{
+    node nn=malloc(sizeof(struct node));
+    nn->data=data;
+    nn->next=NULL;
+    return nn;
+}
+void insbeg(int data)
+{
+    node nn=create(data);
+    if(head==NULL)
+    {
+        head=nn;
+        return;
+    }
+    nn->next=head;
+    head=nn;
+}
+void insmid(int data,int pos)
+{
+    node nn=create(data);
+    if(head==NULL || pos==0)
+    {
+        insbeg(data);
+        return;
+    }
+    int x=0;
+    node tp=head;
+    while(tp!=NULL && x<pos-1)
+    {
+        tp=tp->next;
+        x++;
+    }
+    nn->next=tp->next;
+    tp->next=nn;
+}
+void inslst(int data)
+{
+    node nn=create(data);
+    if(head==NULL)
+    {
+        head=nn;
+        return;
+    }
+   
+    node tp=head;
+    while(tp->next!=NULL)
+    {
+        tp=tp->next;
+    }
+    tp->next=nn;
+}
+void delfxx()
+{
+    if(head==NULL)
+    {
+        return;
+    }
+   
+    head=head->next;
+}
+void delmid(int pos)
+{
+    if(head==NULL)
+    {
+        return;
+    }
+    if(pos==0)
+    {
+        node z=head;
+        head=head->next;
+        free(z);
+    }
+    node tp=head;
+    int x=0;
+    while(tp!=NULL && x<pos-1)
+    {
+        tp=tp->next;
+        x++;
+    }
+    node d=tp->next;
+    tp->next=d->next;
+    free(d);
+}
+void dellxx()
+{
+    if(head==NULL)
+    {
+        return;
+    }
+    if(head->next==NULL)
+    {
+        free(head);
+        // head=NULL;
+        return;
+    }
+    node tp=head;
+    while(tp->next->next!=NULL)
+    {
+        tp=tp->next;
+    }
+    free(tp->next);
+    tp->next=NULL;
+}
+void race()
+{
+    node fx=head;
+    node sx=head;
+    if(head==NULL)
+    {
+        return;
+    }
+    while(fx!=NULL && fx->next!=NULL)
+    {
+        sx=sx->next;
+        fx=fx->next->next;
+    }
+    printf("%d",sx->data);
+}
+void cycle()
+{
+    node fx=head;
+    node sx=head;
+    if(head==NULL)
+    {
+        return;
+    }
+    while(fx!=NULL && fx->next!=NULL)
+    {
+        sx=sx->next;
+        fx=fx->next->next;
+        if(fx==sx)
+        {
+            printf("YES");
+            return;
+        }
+    }
+    printf("NO");
+}
+void ccycle()
+{
+    if(head==NULL)
+    {
+        return;
+    }
+    node tp=head;
+    while(tp->next!=NULL)
+    {
+        tp=tp->next;
+    }
+    tp->next=head->next;
+}
+void reverxx()
+{
+    node prv=NULL;
+    node cur=head;
+    node nxt=NULL;
+    while(cur!=NULL)
+    {
+        nxt=cur->next;
+        cur->next=prv;
+        prv=cur;
+        cur=nxt;
+    }
+    head=prv;
+}
+void display()
+{
+    if(head==NULL)
+    {
+        return;
+    }
+    node tp=head;
+    while(tp!=NULL)
+    {
+        printf("%d ",tp->data);
+        tp=tp->next;
+    }
+}
+int main(void)
+{
+    inslst(10);
+    inslst(20);
+    inslst(30);
+    inslst(40);
+    inslst(50);
+    inslst(60);
+    inslst(70);
+    insbeg(100);
+    insmid(200,3);
+    display();
+    printf("\n");
+    reverxx();
+    display();
+    printf("\n");
+   
+}
+
+
+
+
+
+
+
