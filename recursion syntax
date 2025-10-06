@@ -1,0 +1,17 @@
+#include<stdio.h>
+int x=0;
+void f()
+{
+    if(x==5)
+    {
+        return;
+    }
+    x++;
+    printf("xx\n");
+    f();
+}
+int main()
+{
+    f();
+    return 0;
+}
