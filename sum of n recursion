@@ -1,0 +1,19 @@
+#include<stdio.h>
+
+void f(int i,int sum)
+{
+    if(i==0)
+    {
+        printf("%d",sum);
+        return;
+    }
+    f(i-1,sum+i);
+}
+int main()
+{
+    int x,i,sum=0;;
+    scanf("%d",&x);
+    i=x;
+    f(i,sum);
+    return 0;
+}
