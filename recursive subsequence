@@ -1,0 +1,40 @@
+#include<stdio.h>
+void subseq(int a[],int i,int n)
+{
+    static int sub[100];
+    static int l=0;
+    if(i==n)
+    {
+        if(l==0)
+        {
+            printf("{}");
+        }
+        else
+        {
+            printf("{");
+            for(int j=0;j<l;j++)
+            {
+                printf("%d",sub[j]);
+            }
+            printf("}");
+        }
+        return;
+    }
+    sub[l++]=a[i];
+    subseq(a,i+1,n);
+    l--;
+    subseq(a,i+1,n);
+    
+}
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    subseq(a,0,n);
+    return 0;
+}
