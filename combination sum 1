@@ -1,0 +1,39 @@
+#include<stdio.h>
+void findsum(int i,int n,int a[],int x,int b[],int blen,int sum)
+{
+    if(sum==x)
+    {
+        printf("{");
+        for(int i=0;i<blen;i++)
+        {
+            printf("%d",b[i]);
+            if(i<blen-1)
+            {
+                printf(",");
+            }
+        }
+        printf("}");
+        return;
+    }
+    if(i==n || sum>x) return;
+    
+    b[blen]=a[i];
+    findsum(i,n,a,x,b,blen+1,sum+a[i]);
+    findsum(i+1,n,a,x,b,blen,sum);
+    
+}
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int sum=0;
+    int a[n];
+    int b[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    int x;
+    scanf("%d",&x);
+    findsum(0,n,a,x,b,0,0);
+}
