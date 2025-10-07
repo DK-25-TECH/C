@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<string.h>
+void swap(char *l,char *r)
+{
+    char x=*l;
+    *l=*r;
+    *r=x;
+}
+void permute(char *c,int l,int r)
+{
+    if(l==r && strlen(c)==r)
+    {
+        printf("%s\n",c);
+        return;
+    }
+    for(int i=l;i<=r;i++)
+    {
+        swap(&c[l],&c[i]);
+        permute(c,l+1,r);
+        swap(&c[l],&c[i]);
+    }
+}
+int main()
+{
+    char c[100];
+    fgets(c,sizeof(c),stdin);
+    int n=strlen(c);
+    if(c[n-1]=='\n')
+    {
+        c[n-1]='\0';
+    }
+    // printf("%d",n);
+    permute(c,0,n-1);
+}
