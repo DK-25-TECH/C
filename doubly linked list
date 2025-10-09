@@ -1,0 +1,22 @@
+{
+    if(head==NULL)
+    {
+        return;
+    }
+
+   node tp=head;
+   node temp=NULL;
+   
+   while(tp!=NULL)
+   {
+       temp=tp->prv;
+       tp->prv=tp->next;
+       tp->next=temp;
+       tp=tp->prv;
+   }
+   if(temp!=NULL)
+   {
+       
+   head=temp->prv;
+   }
+}
