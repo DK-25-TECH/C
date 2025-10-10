@@ -1,0 +1,17 @@
+#include<stdio.h>
+int main()
+{
+ 
+    char c[100];
+    fgets(c,sizeof(c),stdin);
+    char *a=c;
+    int x=0;
+    while(*a!='\0')
+    {
+        a++;
+        x++;
+    }
+        printf("%d",x);
+    
+    return 0;
+}
