@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main()
+{
+    char c[100];
+    int frq[250]={0};
+    fgets(c,sizeof(c),stdin);
+    int x=0;
+    
+    for(int i=0;i<strlen(c)-1;i++)
+    {
+        frq[(unsigned char)c[i]]++;
+        if(frq[(unsigned char)c[i]]>1)
+        {
+            printf("%c",c[i]);
+           break;
+        }
+    }
+  
+          
+      
+}
