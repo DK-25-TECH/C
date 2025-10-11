@@ -1,0 +1,33 @@
+#include<stdio.h>
+int add(int a,int b)
+{
+    return a+b;
+}
+int sub(int a,int b)
+{
+    return a-b;
+}
+int mux(int a,int b)
+{
+    return a*b;
+}
+int divv(int a,int b)
+{
+    return a/b;
+}
+
+int main()
+{
+    int ch,a,b;
+    scanf("%d %d %d",&a,&b,&ch);
+    int (*fp[4])(int,int)={add,sub,mux,divv};
+    printf("%d",fp[ch](a,b));
+}
+
+
+
+
+
+
+
+
