@@ -1,0 +1,47 @@
+
+#include <stdio.h>
+#include<string.h>
+#include<stdlib.h>
+void func(char *p,char *a,char *b)
+{
+    int i=0;
+   while(*a!='\0')
+   {
+       *(p+i)=*a;
+       a++;
+       i++;
+   }
+    int z=i;
+   while(*b!='\0')
+   {
+       *(p+z)=*b;
+       b++;
+       z++;
+   }
+   *(p+z)='\0';
+}
+int main()
+{
+    char a[100];
+    char b[100];
+    int n;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        scanf(" %c",&a[i]);
+    }
+    a[n]='\0';
+    for(int i=0;i<n;i++)
+    {
+        scanf(" %c",&b[i]);
+    }
+    b[n]='\0';
+    char *p=malloc(2*n+1);
+    func(p,a,b);
+    for(int i=0;p[i]!='\0';i++)
+    {
+        printf("%c",p[i]);
+    }
+    free(p);
+    return 0;
+}
