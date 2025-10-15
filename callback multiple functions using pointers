@@ -1,0 +1,36 @@
+
+#include<stdio.h>
+void print(int *x)
+{
+    
+        printf("%d",*x);
+    
+}
+ void printdob(int *x)
+ {
+     
+         *x=*x*2;
+    
+ }
+ void printttt(int *a,int n,void (*fp)(int *))
+ {
+     for(int i=0;i<n;i++)
+         fp(&a[i]);
+ }
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+
+    printttt(a,n,print);
+    printf("\n");
+    printttt(a,n,printdob);
+    printf("\n");
+    printttt(a,n,print);
+    
+}
