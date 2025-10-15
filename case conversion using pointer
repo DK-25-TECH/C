@@ -1,0 +1,29 @@
+
+#include<stdio.h>
+#include<string.h>
+void func(char *c,int n)
+{
+   for(int i=0;i<n;i++)
+   {
+       if(c[i]>='A' && c[i]<='Z')
+       {
+           *(c+i)+=32;
+       }
+   }
+}
+
+int main()
+{
+   char c[100];
+   fgets(c,sizeof(c),stdin);
+   if(c[strlen(c)]-1=='\n')
+   {
+       c[strlen(c)-1]='\0';
+   }
+   int n=strlen(c)-1;
+   func(c,n);
+   for(int i=0;i<strlen(c)-1;i++)
+   {
+       printf("%c ",c[i]);
+   }
+}
