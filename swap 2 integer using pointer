@@ -1,0 +1,15 @@
+
+#include <stdio.h>
+
+void func(int *p,int *q)
+{
+    int x=*p;
+    *p=*q;
+    *q=x;
+}
+int main()
+{
+    int a=5,b=120;
+    func(&a,&b);
+    printf("%d %d",a,b);
+}
