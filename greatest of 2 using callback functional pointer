@@ -1,0 +1,23 @@
+
+#include<stdio.h>
+int add(int a,int b)
+{
+    if(a>b) return a;
+    
+    return b;
+}
+ void print(int a,int b,int (*fp)(int,int))
+ {
+     int x=fp(a,b);
+     printf("%d",x);
+ }
+int main()
+{
+    
+    int a,b;
+    scanf("%d",&a);
+    scanf("%d",&b);
+     int (*fp)(int,int)=add;
+     print(a,b,fp);
+   
+}
