@@ -1,0 +1,50 @@
+
+#include<stdio.h>
+#include<string.h>
+void lower(char *c)
+{
+    while(*c)
+    {
+        if((*c)>='A' && (*c)<='Z')
+        {
+            *c+=32;
+        }
+        c++;
+    }
+}
+void upper(char *c)
+{
+    while(*c)
+    {
+        if((*c)>='a' && (*c)<='z')
+        {
+            *c-=32;
+        }
+        c++;
+    }
+}
+ 
+ void printarr(char *c,int n,void (*fp)(char *))
+ {
+     fp(c);
+     for(int i=0;i<n;i++)
+     {
+         printf("%c",c[i]);
+     }
+ }
+int main()
+{
+    
+    char c[100];
+    fgets(c,sizeof(c),stdin);
+    if(c[strlen(c)-1]=='\n')
+    {
+        c[strlen(c)-1]='\0';
+    }
+   int n=strlen(c)-1;
+    printarr(c,n,lower);
+    printf("\n");
+    printarr(c,n,upper);
+    
+    
+}
