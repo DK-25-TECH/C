@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main()
+{
+    char c[100];
+    fgets(c,sizeof(c),stdin);
+    int n=strlen(c);
+    if(c[n-1]=='\n')
+    {
+        c[n-1]='\0';
+    }
+    int x=0,z=0,sum=0;
+    char *p=c;
+    while(*p)
+    {
+        if(isdigit(*p))
+        {
+             x=x*10+(*p-'0');
+             z=1;
+        }
+        else
+        {
+            if(z)
+            {
+                sum+=x;
+                x=0;
+                z=0;
+            }
+        }
+        p++;
+    }
+    if(z) sum+=x;
+    printf("%d",sum);
+    return 0;
+}
