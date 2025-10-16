@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main()
+{
+    char c[100];
+    fgets(c,sizeof(c),stdin);
+    int n=strlen(c);
+    if(c[n-1]=='\n')
+    {
+        c[n-1]='\0';
+    }
+    int x=0,sum=0;
+    char *p=c;
+    while(*p)
+    {
+        if(isdigit(*p))
+        {
+            x=*p-'0';
+            sum+=x;
+        }
+       x=0;
+       p++;
+    }
+   
+    printf("%d",sum);
+    return 0;
+}
