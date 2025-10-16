@@ -1,0 +1,39 @@
+#include<stdio.h>
+
+int main()
+{
+    int n,ll=0;
+    scanf("%d",&n);
+    int a[n];
+    int b[n];
+    int x[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    for(int i=0;i<n;i++)
+    {
+        int t=1;
+        b[0]=a[i];
+        for(int j=i+1;j<n;j++)
+        {
+            if(a[j]>b[t-1])
+            {
+                b[t++]=a[j];
+            }
+        }
+        if(t>ll)
+        {
+            ll=t;
+            for(int l=0;l<ll;l++)
+            {
+                x[l]=b[l];
+            }
+        }
+    }
+    for(int i=0;i<ll;i++)
+    {
+        printf("%d ",x[i]);
+    }
+    
+}
