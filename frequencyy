@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char c[100];
+    fgets(c,sizeof(c),stdin);
+    int x[256]={0};
+    if(c[strlen(c)-1]=='\n')
+    {
+        c[strlen(c)-1]='\0';
+    }
+    int n=strlen(c);
+    for(int i=0;i<n;i++)
+    {
+        x[(unsigned char)c[i]]++;
+    }
+    char z[n];
+    int zz=0;
+    for(int i=0;i<n;i++)
+    {
+        if(x[(unsigned char)c[i]]<=2)
+        {
+            z[zz++]=c[i];
+            x[(unsigned char)c[i]]=0;
+        }
+       
+    }
+    for(int i=0;i<zz;i++)
+    {
+        printf("%c\n",z[i]);
+    }
+}
