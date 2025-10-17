@@ -1,0 +1,15 @@
+
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+   char c[100];
+   fgets(c,sizeof(c),stdin);
+   char *s=strtok(c,",");
+   while(s!=NULL)
+   {
+       printf("%s\n",s);
+       s=strtok(NULL,",");
+   }
+    return 0;
+}
