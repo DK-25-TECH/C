@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+#include<stdlib.h>
+
+int main()
+{
+   char c[100];
+   fgets(c,sizeof(c),stdin);
+   int n=strlen(c)-1;
+   if(c[n]=='\n')
+   {
+       c[n]='\0';
+       n--;
+   }
+   char x[10];
+   scanf("%s",x);
+    int l=0,r=n;
+    int z=-1,y=-1;
+   while(l<=r)
+   {
+       if(c[l]==x[0] && z==-1)
+       {
+           z=l;
+           
+       }
+       if(c[r]==x[0] && y==-1)
+       {
+           y=r;
+           
+       }
+       if(z!=-1 && y!=-1)
+       {
+           break;
+   
+           
+       }
+       l++;
+       r--;
+   }
+  printf("%d %d",z,y);
+   
+}
