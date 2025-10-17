@@ -1,0 +1,32 @@
+
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+
+struct demo{
+    int id;
+    char name[20];
+    int age;
+};
+void entity(struct demo x[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d %s %d",&x[i].id,x[i].name,&x[i].age);
+    }
+}
+void fetch(struct demo x[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        printf("%d %s %d\n",x[i].id,x[i].name,x[i].age);
+    }
+}
+int main()
+{
+   int n;
+   scanf("%d",&n);
+   struct demo x[n];
+   entity(x,n);
+   fetch(x,n);
+}
