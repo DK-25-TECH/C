@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+#include<stdlib.h>
+char* removee(char *c,char x,int n)
+{
+    char *p=malloc((n+1)*sizeof(char));
+    char *f=p;
+    int z=0;
+    for(int i=0;i<n;i++)
+    {
+        if(*c==x && !z)
+        {
+            z=1;
+            c++;
+            continue;
+        }
+        
+            *p++=*c++;
+    }
+    *p='\0';
+    return f;
+}
+int main()
+{
+   char c[100];
+   fgets(c,sizeof(c),stdin);
+   int n=strlen(c)-1;
+   if(c[n]=='\n')
+   {
+       c[n]='\0';
+       n--;
+   }
+   char x;
+   scanf("%c",&x);
+   char *p=removee(c,x,n);
+  
+   printf("%s",p);
+}
