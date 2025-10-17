@@ -1,0 +1,13 @@
+
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+   char c[100];
+   fgets(c,sizeof(c),stdin);
+   char *p=c+strspn(c,"abcdefgh");
+   printf("%s",p);
+int n=strspn(c,"ygwefdg");
+printf("%d",n);
+    return 0;
+}
