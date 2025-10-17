@@ -1,0 +1,40 @@
+
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main()
+{
+   char c[100];
+//   char x[100];
+   fgets(c,sizeof(c),stdin);
+   int n=strlen(c)-1;
+   if(c[n]=='\n')
+   {
+       c[n]='\0';
+           n--;
+   }
+   int l=0,r=n;
+   while(l<r)
+   {
+       if(!isalpha(c[l]))
+       {
+           l++;
+       }
+       else if(!isalpha(c[r]))
+       {
+           r--;
+       }
+       else
+       {
+           char x=c[l];
+           c[l]=c[r];
+           c[r]=x;
+       l++;
+       r--;
+       }
+   }
+   
+       printf("%s",c);
+   
+    return 0;
+}
