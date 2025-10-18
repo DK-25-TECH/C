@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<limits.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    int mx1=INT_MIN;
+    int mx2=INT_MIN;
+    int mn1=INT_MAX;
+    int mn2=INT_MAX;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]>mx1)
+        {
+            mx2=mx1;
+            mx1=a[i];
+        }
+         else if(a[i]>mx2 && a[i]!=mx1)
+        {
+            mx2=a[i];
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]<mn1)
+        {
+            mn2=mn1;
+            mn1=a[i];
+        }
+        else if(a[i]<mn2 && a[i]!=mn1)
+        {
+            mn2=a[i];
+        }
+    }
+    printf("%d %d",mn2,mx2);
+    
+}
