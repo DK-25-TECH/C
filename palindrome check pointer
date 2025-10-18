@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int check(char *f,char *l)
+{
+    while(f<l)
+    {
+        if(*f!=*l)
+        {
+            return 0;
+        }
+        f++;
+        l--;
+    }
+    return 1;
+}
+int main()
+{
+    char c[100];
+    fgets(c,sizeof(c),stdin);
+    int n=strlen(c);
+    if(c[n-1]=='\n')
+    {
+        c[n-1]='\0';
+        n--;
+    }
+    char *f=c;
+    char *l=c+n-1;
+    int x=check(f,l);
+    if(x)
+    {
+        printf("yes");
+    }
+    else
+    {
+        printf("no");
+    }
+    
+}
