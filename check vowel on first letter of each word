@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+#include<stdlib.h>
+int main()
+{
+    char a[100];
+    fgets(a,sizeof(a),stdin);
+    int n=strlen(a);
+    if(a[n-1]=='\n')
+    {
+        a[n-1]='\0';
+        n--;
+    }
+    char *p=strtok(a," ");
+    int x=0;
+    while(p!=NULL)
+    {
+        char c=p[0];
+        if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u')
+        {
+            x++;
+        }
+        p=strtok(NULL," ");
+    }
+    printf("%d",x);
+    
+    
+}
