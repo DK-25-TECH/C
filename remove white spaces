@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<string.h>
+int remsps(char *c,int n)
+{
+    int k=0;
+    for(int i=0;i<n;i++)
+    {
+        if(*(c+i)!=' ')
+        {
+            *(c+k)=*(c+i);
+            k++;
+        }
+    }
+    c[k]='\0';
+    return k;
+}
+int main() {
+    char c[100];
+    fgets(c,sizeof(c),stdin);
+    int n=strlen(c);
+    if(c[n-1]=='\n')
+    {
+        c[n-1]='\0';
+    }
+    remsps(c,n);
+    printf("%s ",c);
+}
