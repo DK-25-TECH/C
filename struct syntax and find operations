@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<string.h>
+struct student{
+    int id;
+    char name[20];
+    int age;
+};
+int check(int fid,char fn[],int fage,struct student s[],int n)
+{
+    int x=0;
+    for(int i=0;i<n;i++)
+    {
+        if(s[i].id==fid && strcmp(s[i].name,fn)==0 && s[i].age==fage)
+        {
+            x=1;
+            break;
+        }
+    }
+    return x;
+}
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    struct student s[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d %s %d",&s[i].id,s[i].name,&s[i].age);
+    }
+    int fid;
+    scanf("%d",&fid);
+    char fn[20];
+    scanf("%s",fn);
+    int fage;
+    scanf("%d",&fage);
+    int x=check(fid,fn,fage,s,n);
+    if(x)
+    {
+        printf("STUDENT FOUND");
+    }
+    else
+    {
+        printf("NOT FOUND");
+    }
+    
+}
