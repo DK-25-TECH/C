@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+void concat(char *a,char *b,char *c)
+{
+    while(*a)
+    {
+        *c++=*a++;
+    }
+   
+    while(*b)
+    {
+        *c++=*b++;
+    }
+    *c='\0';
+}
+int main()
+{
+    char a[100];
+    char b[100];
+    fgets(a,sizeof(a),stdin);
+    fgets(b,sizeof(b),stdin);
+    int n=strlen(a);
+    if(a[n-1]=='\n')
+    {
+        a[n-1]='\0';
+       
+    }
+    int n1=strlen(b);
+    if(b[n1-1]=='\n')
+    {
+        b[n1-1]='\0';
+       
+    }
+    
+    char *c=malloc((strlen(a)+strlen(b)+1)*sizeof(char));
+    concat(a,b,c);
+    printf("%s",c);
+}
