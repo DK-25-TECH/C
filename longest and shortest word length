@@ -1,0 +1,31 @@
+
+#include <stdio.h>
+#include<string.h>
+#include<limits.h>
+int main() {
+   char c[100];
+   fgets(c,sizeof(c),stdin);
+   int n=strlen(c);
+   if(c[n-1]=='\n')
+   {
+       c[n-1]='\0';
+       n--;
+   }
+   char *x=strtok(c," ");
+   int mx=INT_MIN;
+   int mn=INT_MAX;
+   while(x!=NULL)
+   {
+       int l=strlen(x);
+       if(l>mx)
+       {
+           mx=l;
+       }
+       if(l<mn)
+       {
+           mn=l;
+       }
+       x=strtok(NULL," ");
+   }
+   printf("%d %d",mx,mn);
+}
