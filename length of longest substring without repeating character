@@ -1,0 +1,33 @@
+
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+    char c[100];
+    scanf("%s",c);
+    int n=strlen(c);
+    
+    int ml=0;
+    for(int i=0;i<n;i++)
+    {
+        int x[256]={0};
+        int l=0;
+        for(int j=i;j<n;j++)
+        {
+            if(x[(unsigned char)c[j]])
+            {
+                break;
+            }
+            else
+            {
+                x[(unsigned char)c[j]]=1;
+                l++;
+            }
+        }
+        if(l>ml)
+        {
+            ml=l;
+        }
+    }
+    printf("%d",ml);
+}
