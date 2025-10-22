@@ -1,0 +1,34 @@
+
+#include <stdio.h>
+#include<string.h>
+void convert(char *x)
+{
+    int l=0;
+    int r=strlen(x)-1;
+    while(l<r)
+    {
+        char xx=x[l];
+        x[l]=x[r];
+        x[r]=xx;
+        l++;
+        r--;
+    }
+    printf("%s ",x);
+}
+int main() 
+{
+    char c[100];
+    fgets(c,sizeof(c),stdin);
+    int n=strlen(c);
+    if(c[n-1]=='\n')
+    {
+        c[n-1]='\0';
+        n--;
+    }
+    char *x=strtok(c," ");
+    while(x!=NULL)
+    {
+        convert(x);
+        x=strtok(NULL," ");
+    }
+}
