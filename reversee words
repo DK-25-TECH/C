@@ -1,0 +1,27 @@
+
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+    char c[200];
+    char *k[200];
+    fgets(c,sizeof(c),stdin);
+    int n=strlen(c);
+    if(c[n-1]=='\n')
+    {
+        c[n-1]='\0';
+        n--;
+    }
+    int i=0;
+    char *x=strtok(c," ");
+    while(x!=NULL)
+    {
+        k[i++]=x;
+        x=strtok(NULL," ");
+    }
+    
+    for(int p=i-1;p>=0;p--){
+            printf("%s ",k[p]);
+    }
+       
+}
