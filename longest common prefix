@@ -1,0 +1,43 @@
+
+#include <stdio.h>
+#include<string.h>
+char *longestCommonPreffix(char **x,int n)
+{
+    static char preffix[100];
+    strcpy(preffix,x[0]);
+    for(int i=1;i<n;i++)
+    {
+        int j=0;
+        while(preffix[j] && x[i][j] && preffix[j]==x[i][j])
+        {
+            j++;
+        }
+        preffix[j]='\0';
+    }
+    return preffix;
+}
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    getchar();
+    char c[n][200];
+    char *x[n];
+    for(int i=0;i<n;i++)
+    {
+        while(1){
+      fgets(c[i],sizeof(c[i]),stdin);
+       int l=strlen(c[i]);
+       if(l==0) continue;
+       if(c[i][l-1]=='\n')
+       {
+           c[i][l-1]='\0';
+       }
+       x[i]=c[i];
+       break;
+        }
+    }
+   printf("%s",longestCommonPreffix(x,n));
+    
+    
+}
