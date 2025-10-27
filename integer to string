@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    char c[20];
+    int j=0;
+    while(n>0)
+    {
+        c[j++]=n%10+'0';
+        n/=10;
+    }
+    printf("%s",c);
+    
+}
