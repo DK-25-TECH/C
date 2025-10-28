@@ -1,0 +1,25 @@
+
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+    char a[20];
+    char b[20];
+    
+    scanf("%s",a);
+    scanf("%s",b);
+    
+    char x[20];
+    strcpy(x,a);
+    
+    strcat(x,a);
+    
+    if(strstr(x,b))
+    {
+        printf("yes");
+    }
+    else
+    {
+        printf("no");
+    }
+}
