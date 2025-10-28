@@ -1,0 +1,28 @@
+
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+void rr(char *c){
+    int i=0;
+    while(c[i])
+    {
+        char x=c[i++];
+        int z=0;
+        if(isdigit(c[i]))
+        {
+            z=z*10+(c[i++]-'0');
+        }
+        for(int i=0;i<z;i++)
+        {
+            putchar(x);
+        }
+        putchar('\n');
+    }
+}
+int main()
+{
+    char c[20];
+    
+    scanf("%s",c);
+    rr(c);
+}    
