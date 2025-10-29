@@ -1,0 +1,44 @@
+
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+void count(char c[],int n)
+{
+    int wc=0,vc=0,cc=0;
+    char *x=strtok(c," ");
+    while(x!=NULL)
+    {
+        wc++;
+        x=strtok(NULL," ");
+    }
+    for(int i=0;i<n;i++)
+    {
+        if(isalpha(c[i]))
+        {
+            char z=tolower(c[i]);
+            if(z=='a' || z=='e' || z=='i' || z=='o' || z=='u')
+            {
+                vc++;
+            }
+            else
+            {
+                cc++;
+            }
+        }
+    }
+    printf("wc=%d\n",wc);
+    printf("vc=%d\n",vc);
+    printf("cc=%d",cc);
+}
+int main()
+{
+    char c[20];
+    fgets(c,sizeof(c),stdin);
+    int n=strlen(c);
+    if(c[n-1]=='\n')
+    {
+        c[n-1]='\0';
+        n--;
+    }
+    count(c,n);
+}
