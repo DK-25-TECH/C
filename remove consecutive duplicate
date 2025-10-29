@@ -1,0 +1,22 @@
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char c[20];
+    scanf("%s",c);
+    int n=strlen(c);
+    int k=0;
+    for(int i=0;i<n;i++)
+    {
+        if(c[i]!=c[i+1])
+        {
+            c[k++]=c[i];
+        }
+    }
+    c[k]='\0';
+   
+        printf("%s",c);
+    
+    return 0;
+}
