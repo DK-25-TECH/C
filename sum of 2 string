@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+#include<stdlib.h>
+int main() {
+ 
+    char a[10],b[10];
+    scanf("%s %s",a,b);
+    int n1=strlen(a);
+    int n2=strlen(b);
+    int *res=calloc((n1+n2),sizeof(int));
+    for(int i=n1-1;i>=0;i--)
+    {
+        for(int j=n2-1;j>=0;j--)
+        {
+            int prod=(a[i]-'0')*(b[j]-'0');
+            int p2=i+j+1;
+            int p1=i+j;
+            
+            int sum=prod+res[p2];
+            
+            res[p2]=sum%10;
+            res[p1]+=sum/10;
+        }
+    }
+    int s=0;
+    while(s<(n1+n2) && res[s]==0)
+    {
+        s++;
+    }
+    int size=(n1+n2)-s;
+    char *x=malloc(size*sizeof(char));
+    for(int i=0;i<size;i++)
+    {
+        x[i]=res[i+s]+'0';
+    }
+        x[size]='\0';
+    for(int i=0;i<size;i++)
+    {
+        printf("%c",*(x+i));
+    }
+}
