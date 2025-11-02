@@ -1,0 +1,70 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include<string.h>
+#include<ctype.h>
+char *keyGenerate(char book[],int length,int year)
+{
+    if(year<0)
+    {
+        return "Invalid Year";
+    }
+    char *result=calloc(100,sizeof(char));
+    char wordCheck[50][50];
+    int wordCount=0;
+    char *token=strtok(book," ");
+    int index=0;
+    while(token!=NULL)
+    {
+        int found=0;
+        char temp[50];
+        strcpy(temp,token);
+        for(int j=0;temp[j];j++)
+        {
+            temp[j]=tolower(temp[j]);
+        }
+        for(int k=0;k<wordCount;k++)
+        {
+            if(strcmp(temp,wordCheck[k])==0)
+            {
+                found=1;
+                break;
+            }
+        }
+        if(!found)
+        {
+            strcpy(wordCheck[wordCount++],temp);
+            if(strlen(token)>3){
+            if(isalpha(token[0]) && islower(token[0]) && !found)
+            {
+                result[index++]=token[0]-32;
+            }
+            else if(isalpha(token[0]) && isupper(token[0]) && !found)
+            {
+                result[index++]=token[0];
+            }
+            }
+        }
+        token=strtok(NULL," ");
+    }
+    result[index++]=(year%10)+'0';
+    result[index]='\0';
+    return result;
+}
+
+int main()
+{
+    char book[200];
+    fgets(book,sizeof(book),stdin);
+    int length=strlen(book);
+    int year;
+    scanf("%d",&year);
+    if(book[length-1]=='\n')
+    {
+        book[length-1]='\0';
+    }
+    char *result=keyGenerate(book,length,year);
+    printf("%s",result);
+}
+
+
