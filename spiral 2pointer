@@ -1,0 +1,122 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#include<stdlib.h>
+int main()
+{
+    int r=3,c=3;
+    int **a=malloc(r*sizeof(int *));
+    for(int i=0;i<r;i++)
+    {
+        *(a+i)=malloc(c*sizeof(int));
+    }
+    // int **b=malloc(r*sizeof(int *));
+    // for(int i=0;i<r;i++)
+    // {
+    //     *(b+i)=malloc(c*sizeof(int));
+    // }
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            scanf("%d",&(*(*(a+i)+j)));
+        }
+    }
+   int lft=0,ryt=c-1,tp=0,bot=r-1;
+    
+    while(tp<=bot && lft<=ryt)
+    {
+        for(int i=lft;i<=ryt;i++)
+        {
+            printf("%d ",*(*(a+tp)+i));
+        }
+        tp++;
+        for(int i=tp;i<=bot;i++)
+        {
+            printf("%d ",*(*(a+i)+ryt));
+        }
+        ryt--;
+        
+        if(tp<=bot)
+        {
+            for(int i=ryt;i>=lft;i--)
+            {
+                printf("%d ",*(*(a+bot)+i));
+            }
+            bot--;
+        }
+        if(lft<=ryt)
+        {
+            for(int i=bot;i>=tp;i--)
+            {
+                printf("%d ",*(*(a+i)+lft));
+            }
+            lft++;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // int m = strlen(q);
+    // if(q[m-1] == '\n')
+    // {
+    //     q[m-1] = '\0';
+    // }
+    //  if(n != m)
+    // {
+    //     printf("res");
+    //     return 0;
+    // }
+    // for(int i=0;i<n;i++)
+    // {
+    //     int x=1;
+    //     for(int j=0;j<n;j++)
+    //     {
+    //         if(c[(i+j)%n]!=q[j])
+    //         {
+    //           x=0;
+    //           break;
+    //         }
+    //     }
+    //     if(x)
+    //     {
+    //         printf("yes");
+    //         return 0;
+    //     }
+    // }
+    // printf("res");
+    // // char *x=strtok(c," ");
+    // // int count=0;
+    // // char z[100][100];
+    // // int mx=0;
+    // // while(x!=NULL)
+    // // {
+    // //   if(strcmp(q,x)!=0)
+    // //   {
+    // //       strcpy(z[mx++],x);
+    // //   }
+    // //     x=strtok(NULL," ");
+    // // }
+    // // for(int i=0;i<mx;i++)
+    // // {
+    // //     printf("%s ",z[i]);
+        
+    // // }
+    
+
+
+
+
