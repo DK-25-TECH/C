@@ -1,0 +1,140 @@
+#include<stdio.h>
+#define n 10
+typedef struct hash{
+    int key;
+    int val;
+    int occ;
+}hash;
+
+hash ht[n];
+void init()
+{
+    for(int i=0;i<n;i++)
+    {
+        ht[i].occ=0;
+    }
+}
+int hashh(int key)
+{
+    return key%n;
+}
+void insert(int key,int val)
+{
+    int x=hashh(key);
+    if(ht[x].occ == 1 && ht[x].key == key)
+    {
+        ht[x].val = val;
+        return;
+    }
+    if(ht[x].occ==0 || ht[x].occ==-1)
+    {
+        ht[x].key=key;
+        ht[x].val=val;
+        ht[x].occ=1;
+        return;
+    }
+    
+    int i=0;
+    while(i<n)
+    {
+         int id=(x+i*i)%n;
+        if(ht[id].key==key && ht[id].occ==1)
+        {
+            ht[id].val=val;
+            return;
+        }
+        if(ht[id].occ==0)
+        {
+            ht[id].key=key;
+            ht[id].val=val;
+            ht[id].occ=1;
+            return;
+        }
+        i++;
+    }
+    printf("NO SPACE");
+}
+void display()
+{
+    for(int i=0;i<n;i++)
+    {
+        if(ht[i].occ==0)
+        {
+            printf("empty\n");
+        }
+        else
+        {
+            printf("%d %d %d\n",i,ht[i].key,ht[i].val);
+        }
+    }
+}
+int search(int key)
+{
+    int x=hashh(key);
+    
+    if(ht[x].key==key && ht[x].occ==1)
+    {
+        return x;
+    }
+    int i=0;
+    while(i<n)
+    {
+        int id=(x+i*i)%n;
+        if(ht[id].key==key && ht[id].occ==1)
+        {
+            return id;
+        }
+        i++;
+    }
+    printf("NOT PRESENT");
+    return -1;
+}
+void delete(int key)
+{
+    int x=hashh(key);
+    if(ht[x].occ==1 && ht[x].key==key)
+    {
+        ht[x].val=0;
+        ht[x].occ=-1;
+        ht[x].key=0;
+        return;
+    }
+    int i=0;
+    while(i<n)
+    {
+        int id=(x+i*i)%n;
+        if(ht[id].key==key && ht[id].occ==1)
+        {
+            ht[id].val=0;
+            ht[id].occ=-1;
+            ht[id].key=0;
+            return;
+        }
+       i++;
+    }
+}
+int main()
+{
+    init();
+    insert(1,12);
+    insert(12,112);
+    insert(112,1221);
+    insert(5431,1672);
+    insert(5431,1672);
+    insert(5431,1672);
+    insert(5431,1672);
+    insert(5431,1672);
+    insert(5431,167276);
+    insert(123,1246);
+    insert(17,1235);
+    display();
+    printf("\n");
+    printf("\n");
+    delete(12);
+    display();
+    // int x=search(1987);
+    // if(x!=-1)
+    // {
+    //     printf("%d",x);
+    // }
+}
